@@ -7,14 +7,22 @@
     <title>Basic HTML and CSS</title>
     <style>
         body {
+            /*--a is size of dots, b is half of a for the spacing*/
+            --a: 25px;
+            --b: calc(var(--a) / 2);
             font-family: Cambria, serif;
-            background-color: #eed4bc;
+            background-color: #efdfd1;
+            opacity: 1;
+            background-image:  radial-gradient(#684a22 0.75px, transparent 0.75px), radial-gradient(#684a22 0.75px, #efdfd1 0.75px);
+            background-size: var(--a) var(--a);
+            background-position: 0 0,var(--b) var(--b);
             /* f4f4f4 was chosen by chatgpt */
             text-align: center;
             padding:75px;
         }
         .container {
             background-color: white;
+            opacity: 1;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -29,7 +37,9 @@
             color: #685c58;
             font-size: 18px;
         }
-        
+        background {
+            
+        }
     </style>
 </head>
 <body>
