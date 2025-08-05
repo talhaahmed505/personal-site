@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basic HTML and CSS</title>
     <style>
+        .wrapper {
+            max-width: 750px;
+            margin: auto;
+        }
         body {
             /*--a is size of dots, b is half of a for the spacing*/
             --a: 25px;
@@ -69,23 +73,26 @@
         .button:hover {
             background-color: #313d4de7;
         }
-        
 
+        
     </style>
 </head>
 <body>
-    <a href="https://ebooks.talhaahmed.dev" class="button">ebooks</a>
-    <div class="container1">
-        <h1>Hi! I'm Talha Ahmed</h1>
-        <p1>I am an aspiring Network Engineer studying at Purdue University who loves working with others and exploring the outdoors. Technology is my passion and I am interested in every aspect, from enterprise software to chip design.</p1>
-        <p1><br><br>Attached here is a link to my resume hosted on my copyparty server!</p1>
+    <div class="wrapper">
+        <a href="https://ebooks.talhaahmed.dev" class="button">ebooks</a>
+        <div class="container1">
+            <h1>Hi! I'm Talha Ahmed</h1>
+            <p1>I am an aspiring Network Engineer studying at Purdue University who loves working with others and exploring the outdoors. Technology is my passion and I am interested in every aspect, from enterprise software to chip design.</p1>
+            <p1><br><br>Attached here is a link to my resume hosted on my copyparty server!</p1>
+        </div>
+        
+        <!-- <div class="container2">
+            <h1>Table of Contents</h1>
+            <p1>1. Education</p1><br>
+            <p1>2. Experience</p1><br>
+            <p1>3. Certifications</p1> 
+        </div> -->
+        
     </div>
-    
-    <!-- <div class="container2">
-        <h1>Table of Contents</h1>
-        <p1>1. Education</p1><br>
-        <p1>2. Experience</p1><br>
-        <p1>3. Certifications</p1> 
-    </div> -->
 </body>
 </html>
