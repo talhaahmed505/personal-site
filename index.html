@@ -1,100 +1,143 @@
-<title>Talha Ahmed</title>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talha Ahmed's site</title>
-    <link rel="icon" type="icon" href="/frierenstaff.png">
-    <style>
-        .wrapper {
-            max-width: 750px;
-            margin: auto;
-        }
-        body {
-            /*--a is size of dots, b is half of a for the spacing*/
-            --a: 25px;
-            --b: calc(var(--a) / 2);
-            font-family: Cambria, serif;
-            background-color: #eed4bc;
-            opacity: 1;
-            background-image:  radial-gradient(#684a22 0.75px, transparent 0.75px), radial-gradient(#684a22 0.75px, #eed4bc 0.75px);
-            background-size: var(--a) var(--a);
-            background-position: 0 0,var(--b) var(--b);
-            /* f4f4f4 was chosen by chatgpt */
-            text-align: left;
-            padding:75px;
-        }
-        .container1 {
-            background-color: white;
-            opacity: 1;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 750px;
-            margin: auto;
-        }
-        .container2 {
-            background-color: white;
-            opacity: 1;
-            padding-left: 15px;
-            padding-right: 15px;
-            padding-top: 5px;
-            padding-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 750px;
-            min-width: 200px;
-            margin: auto;
-        }
-        h1 {
-            color: #3a3735;
-            font-size: 36px;
-        }
-        p1 {
-            color: #685c58;
-            font-size: 18px;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 18px;
-            color: white;
-            background-color: #5a86c5e7;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            margin-left: 10px;
-            margin-right: 10px;
-        }
-        .button:hover {
-            background-color: #313d4de7;
-        }
-        .views {
-            padding-top: 20px;
-        }
-        
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Talha Ahmed</title>
+  <link rel="icon" href="/frierenstaff.png" type="image/png" />
+  <style>
+    :root {
+      --max: 750px;
+      --pad: 24px;
+      --radius: 12px;
+      --shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      --bg: #eed4bc;
+      --dot: #684a22;
+      --ink: #3a3735;
+      --sub: #685c58;
+      --btn: #5a86c5e7;
+      --btnH: #313d4de7;
+    }
+
+    body {
+      --a: 25px;    /* dot size */
+      --b: calc(var(--a) / 2);  /* dot spacing */
+      margin: 0;
+      font-family: Cambria, serif;
+      color: #111;
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(var(--dot) 0.75px, transparent 0.75px),
+        radial-gradient(var(--dot) 0.75px, var(--bg) 0.75px);
+      background-size: var(--a) var(--a);
+      background-position: 0 0, var(--b) var(--b);
+    }
+
+    .wrapper {
+      max-width: var(--max);
+      margin-inline: auto;
+      padding: clamp(32px, 8vw, 96px) clamp(16px, 4vw, 48px); /* more top padding */
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+      justify-content: flex-start;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      font-size: 1rem;
+      color: #fff;
+      background: var(--btn);
+      border: 0;
+      border-radius: 8px;
+      text-decoration: none;
+      line-height: 1;
+      transition: filter 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .button:hover { filter: brightness(0.92); }
+    .button:active { filter: brightness(0.85); }
+
+    .card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(16px, 3.5vw, 24px);
+    }
+
+    h1 {
+      color: var(--ink);
+      font-size: clamp(1.5rem, 2.8vw + 1rem, 2.25rem);
+      line-height: 1.15;
+      margin: 0 0 0.5rem 0;
+    }
+
+    p {
+      color: var(--sub);
+      font-size: clamp(1rem, 0.6vw + 0.9rem, 1.125rem);
+      line-height: 1.6;
+      margin: 0.75rem 0 0 0;
+    }
+
+    .views {
+      display: block;
+      margin-top: 16px;
+      margin-left: 0; /* align with card left edge */
+      width: auto;
+      max-width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 600px) {
+      .button {
+        flex: 1 1 100%;
+        text-align: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .button { transition: none; }
+    }
+  </style>
 </head>
 <body>
-    <div class="wrapper">
-        <a href="https://linkedin.com/in/talhaahmed505" class="button">LinkedIn</a>
-        <a href="https://files.talhaahmed.dev/resume.pdf" class="button">Resume</a>
-        <a href="https://ebooks.talhaahmed.dev" class="button">E-Books</a>
-        
-        <div class="container1">
-            <h1>Hi! I'm Talha Ahmed</h1>
-            <p1>I am an aspiring Network Engineer from the <strong>Chicago suburbs</strong> studying at <strong>Purdue University</strong> who loves working with others and exploring the outdoors. Technology is my passion and I am interested in every aspect, from enterprise software to chip design. I also love the Cosmere Universe by Brandon Sanderson and the Red Rising Saga by Pierce Brown!</p1>
-            <p1><br><br>Attached above is a link to my <strong>LinkedIn</strong> profile. Next to it is  a link to my <strong>resume</strong> hosted on my Copyparty server, as well as my Calibre-Web E-Book Library. Both are hosted in Docker containers.</p1>
-            <p1><br><br>Lately I have been studying the <strong>CCNA</strong> to improve my networking skills. I just wrapped up dynamic routing protocols such as OSPF and EIGRP, and am now focusing on IPv6. I'm facinated by both and can't wait to learn more.</p1>
-        </div>
-            <div class="views"></div>
-                <img src="https://hitscounter.dev/api/hit?url=talhaahmed.dev&label=Views&icon=binoculars-fill&color=%23198754&message=&style=flat&tz=UTC">
-            </div>
-        
-    </div>
+  <main class="wrapper">
+    <nav class="links" aria-label="Primary">
+      <a href="https://linkedin.com/in/talhaahmed505" class="button">LinkedIn</a>
+      <a href="https://files.talhaahmed.dev/resume.pdf" class="button">Resume</a>
+      <a href="https://ebooks.talhaahmed.dev" class="button">E-Books</a>
+    </nav>
+
+    <section class="card">
+      <h1>Hi! I'm Talha Ahmed</h1>
+      <p>
+        I am an aspiring Network Engineer from the <strong>Chicago suburbs</strong> studying at
+        <strong>Purdue University</strong> who loves working with others and exploring the outdoors.
+        Technology is my passion and I am interested in every aspect, from enterprise software to chip design.
+        I also love the Cosmere Universe by Brandon Sanderson and the Red Rising Saga by Pierce Brown!
+      </p>
+      <p>
+        Attached above is a link to my <strong>LinkedIn</strong> profile. Next to it is a link to my
+        <strong>resume</strong> hosted on my Copyparty server, as well as my Calibre-Web E-Book Library.
+        Both are hosted in Docker containers.
+      </p>
+      <p>
+        Lately I have been studying the <strong>CCNA</strong> to improve my networking skills. I just wrapped up
+        dynamic routing protocols such as OSPF and EIGRP, and am now focusing on IPv6. I'm fascinated by both
+        and can't wait to learn more.
+      </p>
+    </section>
+
+    <img
+      class="views"
+      alt="Site view counter"
+      src="https://hitscounter.dev/api/hit?url=talhaahmed.dev&label=Views&icon=binoculars-fill&color=%23198754&message=&style=flat&tz=UTC"
+    />
+  </main>
 </body>
 </html>
