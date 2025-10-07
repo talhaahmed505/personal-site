@@ -20,18 +20,20 @@
     }
 
     body {
-      --a: 25px;    /* dot size */
-      --b: calc(var(--a) / 2);  /* dot spacing */
-      margin: 0;
-      font-family: Cambria, serif;
-      color: #111;
-      background-color: var(--bg);
-      background-image:
+        --a: 24px;
+        --b: calc(var(--a) / 2);
+        margin: 0;
+        font-family: Cambria, serif;
+        color: #111;
+        background-color: var(--bg);
+        background-image:
         radial-gradient(var(--dot) 0.75px, transparent 0.75px),
         radial-gradient(var(--dot) 0.75px, var(--bg) 0.75px);
-      background-size: var(--a) var(--a);
-      background-position: 0 0, var(--b) var(--b);
-    }
+        background-size: var(--a) var(--a);
+        background-position: 0 0, var(--b) var(--b);
+        
+}
+
 
     .wrapper {
       max-width: var(--max);
