@@ -20,25 +20,23 @@
     }
 
     body {
-        --a: 24px;
-        --b: calc(var(--a) / 2);
-        margin: 0;
-        font-family: Cambria, serif;
-        color: #111;
-        background-color: var(--bg);
-        background-image:
+      --a: 24px;
+      --b: calc(var(--a) / 2);
+      margin: 0;
+      font-family: Cambria, serif;
+      color: #111;
+      background-color: var(--bg);
+      background-image:
         radial-gradient(var(--dot) 0.75px, transparent 0.75px),
         radial-gradient(var(--dot) 0.75px, var(--bg) 0.75px);
-        background-size: var(--a) var(--a);
-        background-position: 0 0, var(--b) var(--b);
-        
-}
-
+      background-size: var(--a) var(--a);
+      background-position: 0 0, var(--b) var(--b);
+    }
 
     .wrapper {
       max-width: var(--max);
       margin-inline: auto;
-      padding: clamp(32px, 8vw, 96px) clamp(16px, 4vw, 48px); /* more top padding */
+      padding: clamp(32px, 8vw, 96px) clamp(16px, 4vw, 48px);
     }
 
     .links {
@@ -70,6 +68,7 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: clamp(16px, 3.5vw, 24px);
+      margin-bottom: 16px;
     }
 
     h1 {
@@ -79,41 +78,118 @@
       margin: 0 0 0.5rem 0;
     }
 
-    p {
+    .card > p {
       color: var(--sub);
       font-size: clamp(1rem, 0.6vw + 0.9rem, 1.125rem);
       line-height: 1.6;
       margin: 0.75rem 0 0 0;
     }
 
+    /* --- Projects --- */
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #aaa;
+      margin: 0 0 10px;
+    }
+
+    .section-divider { margin-top: 20px; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .project-tile {
+      border: 1px solid #e0dcd7;
+      border-radius: 8px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tile-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 4px;
+    }
+
+    .tile-desc {
+      font-size: 12px;
+      color: var(--sub);
+      margin: 0 0 8px;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .tile-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 4px; }
+
+    .tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    .tag.personal { background: #e8f0fe; color: #3c5a9a; }
+    .tag.school   { background: #fef3e2; color: #8a5c00; }
+    .tag.tech     { background: #f0f0f0; color: #555; }
+    .tag.school2   { background: #dcf3e8; color: #3f7550; }
+
+    .tile-btn {
+      display: inline-block;
+      background: var(--btn);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-family: Cambria, serif;
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: filter 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .tile-btn:hover { filter: brightness(0.92); }
+    .tile-btn:active { filter: brightness(0.85); }
+
     .views {
       display: block;
-      margin-top: 16px;
-      margin-left: 0; /* align with card left edge */
+      margin-top: 4px;
       width: auto;
       max-width: 100%;
       height: auto;
     }
 
     @media (max-width: 600px) {
-      .button {
-        flex: 1 1 100%;
-        text-align: center;
-      }
+      .button { flex: 1 1 100%; text-align: center; }
+      .projects-grid { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .button { transition: none; }
+      .button, .tile-btn { transition: none; }
     }
   </style>
 </head>
 <body>
   <main class="wrapper">
+
     <nav class="links" aria-label="Primary">
       <a href="https://linkedin.com/in/talhaahmed505" class="button">LinkedIn</a>
-      <a href="https://files.talhaahmed.dev/talha-ahmed-resume.pdf" class="button">Resume</a>
-      <a href="https://ebooks.talhaahmed.dev" class="button">E-Books</a>
-      <a href="https://jellyfin.talhaahmed.dev" class="button">Jellyfin</a>
+      <a href="https://files.talhaahmed.dev/talha_ahmed_resume.pdf" class="button">Resume</a>
     </nav>
 
     <section class="card">
@@ -121,23 +197,227 @@
       <p>
         I am an aspiring Network Engineer from the <strong>Chicago suburbs</strong> studying at
         <strong>Purdue University</strong> who loves working with others and exploring the outdoors.
-        Technology is my passion and I am interested in every aspect, from computer architechture to network security.
-        I also love the Cosmere Universe by Brandon Sanderson and the Red Rising Saga by Pierce Brown!
-      </p>
-      <p>
-        Attached above is a link to my <strong>LinkedIn</strong> profile. Next to it is a link to my
-        <strong>resume</strong> hosted on my Copyparty server, as well as my Calibre-Web E-Book Library
-        and Jellyfin server. All those services are hosted in Docker containers.
+        Technology is my passion and I am interested in every aspect, from computer architechture to network
+        security. I also love the Cosmere Universe by Brandon Sanderson and the Red Rising Saga by Pierce Brown!
       </p>
       <p>
         Lately I earned the <strong>CCNA</strong> to improve my networking skills. I loved learning about
         dynamic routing protocols such as OSPF and EIGRP, and I think that IPv6 is the future.
       </p>
       <p>
-        My newest project is a real time kitty cam with remote control over a PTZ camera. The camera is kept isolated
-        by using a Raspberry Pi as both a wireless router, a firewall, and the compute for the video processing. 
-        The project itself is written in <strong>Python</strong> and runs as a <strong>Docker</strong> container. It uses WebRTC for real time video processing.
+        My newest project is a real time kitty cam with remote control over a PTZ camera. The camera is kept
+        isolated by using a Raspberry Pi as both a wireless router, a firewall, and the compute for the video
+        processing. The project itself is written in <strong>Python</strong> and runs as a
+        <strong>Docker</strong> container. It uses WebRTC for real time video processing.
       </p>
+    </section>
+
+    <section class="card">
+
+      <div class="section-label">Personal projects</div>
+      <div class="projects-grid">
+
+        <div class="project-tile">
+          <div class="tile-title">Kitty cam</div>
+          <div class="tile-desc">Live PTZ camera stream isolated via Raspberry Pi router/firewall. Real-time video over WebRTC.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag personal">Personal</span>
+              <span class="tag tech">Python</span>
+              <span class="tag tech">Docker</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-tile">
+          <div class="tile-title">Jellyfin</div>
+          <div class="tile-desc">Self-hosted media server running in a Docker container.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag personal">Personal</span>
+              <span class="tag tech">Docker</span>
+            </div>
+            <a class="tile-btn" href="https://jellyfin.talhaahmed.dev">Open ↗</a>
+          </div>
+        </div>
+
+        <div class="project-tile">
+          <div class="tile-title">E-Books</div>
+          <div class="tile-desc">Calibre-Web library for browsing and reading my e-book collection.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag personal">Personal</span>
+              <span class="tag tech">Docker</span>
+            </div>
+            <a class="tile-btn" href="https://ebooks.talhaahmed.dev">Open ↗</a>
+          </div>
+        </div>
+
+        <div class="project-tile">
+          <div class="tile-title">Copyparty</div>
+          <div class="tile-desc">Self-hosted file server used for resume hosting and general file sharing.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag personal">Personal</span>
+              <span class="tag tech">Docker</span>
+            </div>
+            <a class="tile-btn" href="https://files.talhaahmed.dev/talha_ahmed_resume.pdf">Open ↗</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="section-label section-divider">School projects</div>
+      <div class="projects-grid">
+
+
+        <div class="project-tile">
+          <div class="tile-title">Active Directory & Virtualization</div>
+          <div class="tile-desc">Built a multi-site Active Directory domain with Group Policy, then migrated physical servers to a VMware ESXi cluster with vCenter and SAN storage.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school2">CNIT 242</span>
+              <span class="tag tech">Active Directory</span>
+              <span class="tag tech">ESXi</span>
+              <span class="tag tech">Powershell</span>
+              <span class="tag tech">SAN</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-tile">
+          <div class="tile-title">Network Engineering Fundamentals</div>
+          <div class="tile-desc">Deployed a VyOS router with VLANs, NAT, and DHCP, then built a redundant Layer 2 topology using MSTP across Cisco and Aruba switches before migrating to OSPF for dynamic routing.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school2">CNIT 344</span>
+              <span class="tag tech">Networking</span>
+              <span class="tag tech">VyOS</span>
+              <span class="tag tech">Cisco</span>
+              <span class="tag tech">Aruba</span>
+              <span class="tag tech">OSPF</span>
+              <span class="tag tech">VLANs</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-tile">
+          <div class="tile-title">Unix Administration</div>
+          <div class="tile-desc">disk quotas, linux printing, pam, nfs, smb, x11 forwarding, SELinux</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school2">CNIT 340</span>
+              <span class="tag tech">Linux</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-tile">
+          <div class="tile-title">34220 lab1-2</div>
+          <div class="tile-desc">bb</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school2">CNIT 34220</span>
+              <span class="tag tech">Linux</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-tile">
+          <div class="tile-title">34220 lab3</div>
+          <div class="tile-desc">bb</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school2">CNIT 34220</span>
+              <span class="tag tech">Linux</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-tile">
+          <div class="tile-title">34220 lab4-5 (security)</div>
+          <div class="tile-desc">bb</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school2">CNIT 34220</span>
+              <span class="tag tech">Linux</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-tile">
+          <div class="tile-title">345 ipv4</div>
+          <div class="tile-desc">bb</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school2">CNIT 345</span>
+              <span class="tag tech">Networking</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-tile">
+          <div class="tile-title">345 ipv6</div>
+          <div class="tile-desc">bb</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school2">CNIT 345</span>
+              <span class="tag tech">Networking</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-tile">
+          <div class="tile-title">345 docker</div>
+          <div class="tile-desc">bb</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school2">CNIT 345</span>
+              <span class="tag tech">Docker</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-tile">
+          <div class="tile-title">Raspberry Pi RAID Array and LAMP Web Server</div>
+          <div class="tile-desc">Built a LAMP Web Server running on a RAID 1 Array which was hosted on two USB flash drives.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school">CNIT 182</span>
+              <span class="tag tech">RAID</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-tile">
+          <div class="tile-title">Unity VR Game</div>
+          <div class="tile-desc">Developed a VR game using Unity with a team of six members to teach geometry concepts to children.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school">TECH 120</span>
+              <span class="tag tech">Unity</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-tile">
+          <div class="tile-title">Calculator App</div>
+          <div class="tile-desc">Created a calculator application using JFrame.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school">CNIT 255</span>
+              <span class="tag tech">Java</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-tile">
+          <div class="tile-title">Minesweeper</div>
+          <div class="tile-desc">Rebuilt Minesweeper in Java</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school">CNIT 255</span>
+              <span class="tag tech">Java</span>
+            </div>
+          </div>
+        </div>
+        
+        
+
+
+        <!--add more projects above this line -->
+      </div>
+
     </section>
 
     <img
@@ -145,6 +425,7 @@
       alt="Site view counter"
       src="https://hitscounter.dev/api/hit?url=talhaahmed.dev&label=Views&icon=binoculars-fill&color=%23198754&message=&style=flat&tz=UTC"
     />
+
   </main>
 </body>
 </html>
