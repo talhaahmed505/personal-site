@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Talha Ahmed</title>
+  <title>Projects — Talha Ahmed</title>
   <link rel="icon" href="/frierenstaff.png" type="image/png" />
   <style>
     :root {
@@ -37,29 +37,28 @@
       padding: clamp(32px, 8vw, 96px) clamp(16px, 4vw, 48px);
     }
 
-    .links {
+    .top-nav {
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+      align-items: center;
+      gap: 16px;
       margin-bottom: 24px;
     }
 
-    .button {
-      display: inline-block;
-      padding: 12px 18px;
-      font-size: 1rem;
+    .back-link {
       font-family: Cambria, serif;
-      color: #fff;
-      background: var(--btn);
-      border: 0;
-      border-radius: 8px;
+      font-size: clamp(0.85rem, 0.3vw + 0.75rem, 0.95rem);
+      color: var(--btn);
       text-decoration: none;
-      line-height: 1;
-      transition: filter 0.2s ease;
-      -webkit-tap-highlight-color: transparent;
+      font-weight: 700;
     }
-    .button:hover { filter: brightness(0.92); }
-    .button:active { filter: brightness(0.85); }
+    .back-link:hover { text-decoration: underline; }
+
+    .page-title {
+      color: var(--ink);
+      font-size: clamp(1.5rem, 2.8vw + 1rem, 2.25rem);
+      line-height: 1.15;
+      margin: 0;
+    }
 
     .card {
       background: #fff;
@@ -68,22 +67,6 @@
       padding: clamp(16px, 3.5vw, 24px);
       margin-bottom: 16px;
     }
-
-    h1 {
-      color: var(--ink);
-      font-size: clamp(1.5rem, 2.8vw + 1rem, 2.25rem);
-      line-height: 1.15;
-      margin: 0 0 0.5rem 0;
-    }
-
-    .card > p {
-      color: var(--sub);
-      font-size: clamp(1rem, 0.6vw + 0.9rem, 1.125rem);
-      line-height: 1.6;
-      margin: 0.75rem 0 0 0;
-    }
-
-    /* --- Project grid --- */
 
     .section-label {
       font-size: clamp(0.7rem, 0.4vw + 0.6rem, 0.8rem);
@@ -108,6 +91,10 @@
       padding: 12px 14px;
       display: flex;
       flex-direction: column;
+    }
+
+    .project-tile.placeholder {
+      opacity: 0.5;
     }
 
     .tile-title {
@@ -167,23 +154,6 @@
     .tile-btn:hover { filter: brightness(0.92); }
     .tile-btn:active { filter: brightness(0.85); }
 
-    .all-projects-row {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 16px;
-      padding-top: 14px;
-      border-top: 1px solid #e0dcd7;
-    }
-
-    .all-projects-link {
-      font-family: Cambria, serif;
-      font-size: clamp(0.85rem, 0.3vw + 0.75rem, 0.95rem);
-      color: var(--btn);
-      text-decoration: none;
-      font-weight: 700;
-    }
-    .all-projects-link:hover { text-decoration: underline; }
-
     .views {
       display: block;
       margin-top: 4px;
@@ -193,43 +163,21 @@
     }
 
     @media (max-width: 600px) {
-      .button { flex: 1 1 100%; text-align: center; }
       .projects-grid { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .button, .tile-btn { transition: none; }
+      .tile-btn { transition: none; }
     }
   </style>
 </head>
 <body>
   <main class="wrapper">
 
-    <nav class="links" aria-label="Primary">
-      <a href="https://linkedin.com/in/talhaahmed505" class="button">LinkedIn</a>
-      <a href="https://files.talhaahmed.dev/talha_ahmed_resume.pdf" class="button">Resume</a>
-    </nav>
-
-    <section class="card">
-      <h1>Hi! I'm Talha Ahmed</h1>
-      <p>
-        I am an aspiring Network Engineer from the <strong>Chicago suburbs</strong> studying at
-        <strong>Purdue University</strong> who loves working with others and exploring the outdoors.
-        Technology is my passion and I am interested in every aspect, from computer architechture to
-        network security. I also love the Cosmere Universe by Brandon Sanderson and the Red Rising
-        Saga by Pierce Brown!
-      </p>
-      <p>
-        Lately I earned the <strong>CCNA</strong> to improve my networking skills. I loved learning
-        about dynamic routing protocols such as OSPF and EIGRP, and I think that IPv6 is the future.
-      </p>
-      <p>
-        My newest project is a real time kitty cam with remote control over a PTZ camera. The camera
-        is kept isolated by using a Raspberry Pi as both a wireless router, a firewall, and the compute
-        for the video processing. The project itself is written in <strong>Python</strong> and runs as
-        a <strong>Docker</strong> container. It uses WebRTC for real time video processing.
-      </p>
-    </section>
+    <div class="top-nav">
+      <a href="index.html" class="back-link">← Back</a>
+      <h1 class="page-title">All Projects</h1>
+    </div>
 
     <section class="card">
 
@@ -298,6 +246,7 @@
               <span class="tag tech">Active Directory</span>
               <span class="tag tech">ESXi</span>
               <span class="tag tech">PowerShell</span>
+              <span class="tag tech">SAN</span>
             </div>
           </div>
         </div>
@@ -311,14 +260,138 @@
               <span class="tag tech">VyOS</span>
               <span class="tag tech">OSPF</span>
               <span class="tag tech">Cisco</span>
+              <span class="tag tech">Aruba</span>
+              <span class="tag tech">VLANs</span>
             </div>
           </div>
         </div>
 
-      </div>
+        <div class="project-tile">
+          <div class="tile-title">Unix Administration</div>
+          <div class="tile-desc">Disk quotas, Linux printing, PAM, NFS, SMB, X11 forwarding, and SELinux configuration.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school2">CNIT 340</span>
+              <span class="tag tech">Linux</span>
+            </div>
+          </div>
+        </div>
 
-      <div class="all-projects-row">
-        <a href="projects.html" class="all-projects-link">View all projects →</a>
+        <div class="project-tile">
+          <div class="tile-title">Raspberry Pi RAID &amp; LAMP Server</div>
+          <div class="tile-desc">Built a LAMP web server running on a RAID 1 array hosted on two USB flash drives.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school">CNIT 182</span>
+              <span class="tag tech">Linux</span>
+              <span class="tag tech">RAID</span>
+              <span class="tag tech">Apache</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-tile">
+          <div class="tile-title">Unity VR Game</div>
+          <div class="tile-desc">Developed a VR game with a team of six to teach geometry concepts to children.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school">TECH 120</span>
+              <span class="tag tech">Unity</span>
+              <span class="tag tech">C#</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-tile">
+          <div class="tile-title">Calculator App</div>
+          <div class="tile-desc">Created a calculator application using JFrame.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school">CNIT 255</span>
+              <span class="tag tech">Java</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-tile">
+          <div class="tile-title">Minesweeper</div>
+          <div class="tile-desc">Rebuilt Minesweeper in Java.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school">CNIT 255</span>
+              <span class="tag tech">Java</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CNIT 34220 labs — fill in descriptions when ready -->
+        <div class="project-tile placeholder">
+          <div class="tile-title">Linux Labs 1–2</div>
+          <div class="tile-desc">Coming soon.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school2">CNIT 34220</span>
+              <span class="tag tech">Linux</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-tile placeholder">
+          <div class="tile-title">Linux Lab 3</div>
+          <div class="tile-desc">Coming soon.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school2">CNIT 34220</span>
+              <span class="tag tech">Linux</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-tile placeholder">
+          <div class="tile-title">Linux Lab 4–5 (Security)</div>
+          <div class="tile-desc">Coming soon.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school2">CNIT 34220</span>
+              <span class="tag tech">Linux</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CNIT 345 labs — fill in descriptions when ready -->
+        <div class="project-tile placeholder">
+          <div class="tile-title">IPv4 Routing Lab</div>
+          <div class="tile-desc">Coming soon.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school2">CNIT 345</span>
+              <span class="tag tech">Networking</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-tile placeholder">
+          <div class="tile-title">IPv6 Routing Lab</div>
+          <div class="tile-desc">Coming soon.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school2">CNIT 345</span>
+              <span class="tag tech">Networking</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-tile placeholder">
+          <div class="tile-title">Docker Lab</div>
+          <div class="tile-desc">Coming soon.</div>
+          <div class="tile-footer">
+            <div class="tag-row">
+              <span class="tag school2">CNIT 345</span>
+              <span class="tag tech">Docker</span>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </section>
