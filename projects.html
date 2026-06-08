@@ -45,13 +45,21 @@
     }
 
     .back-link {
+      display: inline-block;
+      padding: 12px 18px;
+      font-size: 1rem;
       font-family: Cambria, serif;
-      font-size: clamp(0.85rem, 0.3vw + 0.75rem, 0.95rem);
-      color: var(--btn);
+      color: #fff;
+      background: var(--btn);
+      border: 0;
+      border-radius: 8px;
       text-decoration: none;
-      font-weight: 700;
+      line-height: 1;
+      transition: filter 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
     }
-    .back-link:hover { text-decoration: underline; }
+    .back-link:hover { filter: brightness(0.92); }
+    .back-link:active { filter: brightness(0.85); }
 
     .page-title {
       color: var(--ink);
