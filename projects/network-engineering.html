@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Network Engineering Fundamentals — Talha Ahmed</title>
+  <link rel="icon" href="/frierenstaff.png" type="image/png" />
+  <style>
+    :root {
+      --max: 750px;
+      --radius: 12px;
+      --shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      --bg: #eed4bc;
+      --dot: #684a22;
+      --ink: #3a3735;
+      --sub: #685c58;
+      --btn: #5a86c5e7;
+    }
+
+    body {
+      --a: 24px;
+      --b: calc(var(--a) / 2);
+      margin: 0;
+      font-family: Cambria, serif;
+      color: #111;
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(var(--dot) 0.75px, transparent 0.75px),
+        radial-gradient(var(--dot) 0.75px, var(--bg) 0.75px);
+      background-size: var(--a) var(--a);
+      background-position: 0 0, var(--b) var(--b);
+    }
+
+    .wrapper {
+      max-width: var(--max);
+      margin-inline: auto;
+      padding: clamp(32px, 8vw, 96px) clamp(16px, 4vw, 48px);
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .back-link {
+      font-family: Cambria, serif;
+      font-size: clamp(0.85rem, 0.3vw + 0.75rem, 0.95rem);
+      color: var(--btn);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    .page-title {
+      color: var(--ink);
+      font-size: clamp(1.5rem, 2.8vw + 1rem, 2.25rem);
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(16px, 3.5vw, 24px);
+      margin-bottom: 16px;
+    }
+
+    .section-label {
+      font-size: clamp(0.7rem, 0.4vw + 0.6rem, 0.8rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #aaa;
+      margin: 0 0 10px;
+    }
+
+    .section-divider { margin-top: 24px; }
+
+    .card p {
+      color: var(--sub);
+      font-size: clamp(1rem, 0.6vw + 0.9rem, 1.125rem);
+      line-height: 1.6;
+      margin: 0 0 0.75rem 0;
+    }
+    .card p:last-child { margin-bottom: 0; }
+
+    .card ul {
+      color: var(--sub);
+      font-size: clamp(1rem, 0.6vw + 0.9rem, 1.125rem);
+      line-height: 1.6;
+      margin: 0;
+      padding-left: 1.4em;
+    }
+    .card ul li { margin-bottom: 0.35em; }
+    .card ul li:last-child { margin-bottom: 0; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .tag {
+      font-size: clamp(0.65rem, 0.2vw + 0.6rem, 0.72rem);
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-family: Cambria, serif;
+    }
+    .tag.school2  { background: #dcf3e8; color: #3f7550; }
+    .tag.tech     { background: #f0f0f0; color: #555; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tile-btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrapper">
+
+    <div class="top-nav">
+      <a href="../projects.html" class="back-link">← All Projects</a>
+      <h1 class="page-title">Network Engineering Fundamentals</h1>
+    </div>
+
+    <section class="card">
+
+      <div class="section-label">Overview</div>
+      <p>
+        A semester-long lab sequence from CNIT 344 at Purdue that walked through building a
+        production-style network from scratch. Starting with a single router, the topology grew
+        progressively more complex — Layer 2 redundancy, then dynamic Layer 3 routing — using a
+        mix of VyOS, Cisco, and Aruba hardware.
+      </p>
+
+      <div class="section-label section-divider">What I built</div>
+      <ul>
+        <li>Configured a VyOS router with inter-VLAN routing, NAT for internet access, and DHCP pools for each VLAN.</li>
+        <li>Designed and implemented a redundant Layer 2 topology across Cisco and Aruba switches, using Multiple Spanning Tree Protocol (MSTP) to prevent loops while maintaining redundant paths.</li>
+        <li>Configured 802.1Q trunk links and access ports across all switches, mapping VLANs to the correct segments.</li>
+        <li>Migrated from static routing to OSPF, configuring areas and verifying neighbor adjacencies and route propagation across the full topology.</li>
+        <li>Tested failover by pulling links and confirming MSTP reconverged and OSPF re-routed traffic correctly.</li>
+      </ul>
+
+      <div class="section-label section-divider">What I learned</div>
+      <p>
+        Building the same network in stages — routing first, then L2 redundancy, then dynamic routing
+        — made the interactions between layers concrete rather than theoretical. Debugging MSTP port
+        states and OSPF neighbor adjacency issues hands-on was the most valuable part, since it
+        mirrors the kind of troubleshooting required on real enterprise gear.
+      </p>
+
+      <div class="section-label section-divider">Tech stack</div>
+      <div class="tag-row">
+        <span class="tag school2">CNIT 344</span>
+        <span class="tag tech">VyOS</span>
+        <span class="tag tech">OSPF</span>
+        <span class="tag tech">Cisco IOS</span>
+        <span class="tag tech">Aruba</span>
+        <span class="tag tech">VLANs</span>
+        <span class="tag tech">MSTP</span>
+        <span class="tag tech">NAT</span>
+      </div>
+
+    </section>
+
+  </main>
+</body>
+</html>

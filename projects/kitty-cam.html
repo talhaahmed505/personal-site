@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kitty Cam — Talha Ahmed</title>
+  <link rel="icon" href="/frierenstaff.png" type="image/png" />
+  <style>
+    :root {
+      --max: 750px;
+      --radius: 12px;
+      --shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      --bg: #eed4bc;
+      --dot: #684a22;
+      --ink: #3a3735;
+      --sub: #685c58;
+      --btn: #5a86c5e7;
+    }
+
+    body {
+      --a: 24px;
+      --b: calc(var(--a) / 2);
+      margin: 0;
+      font-family: Cambria, serif;
+      color: #111;
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(var(--dot) 0.75px, transparent 0.75px),
+        radial-gradient(var(--dot) 0.75px, var(--bg) 0.75px);
+      background-size: var(--a) var(--a);
+      background-position: 0 0, var(--b) var(--b);
+    }
+
+    .wrapper {
+      max-width: var(--max);
+      margin-inline: auto;
+      padding: clamp(32px, 8vw, 96px) clamp(16px, 4vw, 48px);
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .back-link {
+      font-family: Cambria, serif;
+      font-size: clamp(0.85rem, 0.3vw + 0.75rem, 0.95rem);
+      color: var(--btn);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    .page-title {
+      color: var(--ink);
+      font-size: clamp(1.5rem, 2.8vw + 1rem, 2.25rem);
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(16px, 3.5vw, 24px);
+      margin-bottom: 16px;
+    }
+
+    .section-label {
+      font-size: clamp(0.7rem, 0.4vw + 0.6rem, 0.8rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #aaa;
+      margin: 0 0 10px;
+    }
+
+    .section-divider { margin-top: 24px; }
+
+    .card p {
+      color: var(--sub);
+      font-size: clamp(1rem, 0.6vw + 0.9rem, 1.125rem);
+      line-height: 1.6;
+      margin: 0 0 0.75rem 0;
+    }
+    .card p:last-child { margin-bottom: 0; }
+
+    .card ul {
+      color: var(--sub);
+      font-size: clamp(1rem, 0.6vw + 0.9rem, 1.125rem);
+      line-height: 1.6;
+      margin: 0;
+      padding-left: 1.4em;
+    }
+    .card ul li { margin-bottom: 0.35em; }
+    .card ul li:last-child { margin-bottom: 0; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .tag {
+      font-size: clamp(0.65rem, 0.2vw + 0.6rem, 0.72rem);
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-family: Cambria, serif;
+    }
+    .tag.personal { background: #e8f0fe; color: #3c5a9a; }
+    .tag.tech     { background: #f0f0f0; color: #555; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tile-btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrapper">
+
+    <div class="top-nav">
+      <a href="../projects.html" class="back-link">← All Projects</a>
+      <h1 class="page-title">Kitty Cam</h1>
+    </div>
+
+    <section class="card">
+
+      <div class="section-label">Overview</div>
+      <p>
+        A live PTZ camera stream that lets me watch my cat from anywhere, built around a
+        network-isolated Raspberry Pi. The Pi acts as a wireless router, firewall, and compute node
+        simultaneously — the camera's traffic never reaches the main home LAN.
+      </p>
+      <p>
+        The streaming backend is written in <strong>Python</strong> and packaged as a
+        <strong>Docker</strong> container, using WebRTC for real-time, low-latency video delivery.
+      </p>
+
+      <div class="section-label section-divider">What I built</div>
+      <ul>
+        <li>Configured the Raspberry Pi as a wireless access point (hostapd) with a dedicated SSID for the camera, isolated from the rest of the home network via firewall rules (nftables).</li>
+        <li>Set up the Pi as the router for the camera subnet so all traffic is inspected and controlled before it can reach anything else.</li>
+        <li>Wrote a Python application using WebRTC (aiortc) to capture the PTZ camera feed and stream it with sub-second latency to a browser.</li>
+        <li>Packaged the application in a Docker container for easy updates and restarts.</li>
+        <li>Implemented PTZ control commands (pan, tilt, zoom) via a simple web UI served alongside the stream.</li>
+      </ul>
+
+      <div class="section-label section-divider">What I learned</div>
+      <p>
+        Designing a multi-role Pi (AP + router + firewall + compute) forced me to think carefully about
+        traffic flows and how to write tight firewall rules that allow only exactly what is needed.
+        Working with WebRTC and aiortc deepened my understanding of ICE, STUN, and how real-time
+        media negotiation works under the hood.
+      </p>
+
+      <div class="section-label section-divider">Tech stack</div>
+      <div class="tag-row">
+        <span class="tag personal">Personal</span>
+        <span class="tag tech">Python</span>
+        <span class="tag tech">Docker</span>
+        <span class="tag tech">WebRTC</span>
+        <span class="tag tech">Raspberry Pi</span>
+        <span class="tag tech">nftables</span>
+        <span class="tag tech">Linux</span>
+      </div>
+
+    </section>
+
+  </main>
+</body>
+</html>
