@@ -30,7 +30,9 @@
         radial-gradient(var(--dot) 0.75px, transparent 0.75px),
         radial-gradient(var(--dot) 0.75px, var(--bg) 0.75px);
         background-size: var(--a) var(--a);
-        background-position: 0 0, var(--b) var(--b);
+        background-position:
+          var(--mx, 0px) var(--my, 0px),
+          calc(var(--b) + var(--mx, 0px)) calc(var(--b) + var(--my, 0px));
         
 }
 
@@ -145,5 +147,29 @@
       src="https://hitscounter.dev/api/hit?url=talhaahmed.dev&label=Views&icon=binoculars-fill&color=%23198754&message=&style=flat&tz=UTC"
     />
   </main>
+
+  <script>
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var root = document.documentElement;
+      var targetX = 0, targetY = 0, curX = 0, curY = 0;
+      var maxShift = 10; // max px the dot grid shifts toward the cursor
+
+      window.addEventListener('mousemove', function (e) {
+        targetX = (e.clientX / window.innerWidth - 0.5) * 2;  // -1 to 1
+        targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+      });
+
+      function animate() {
+        curX += (targetX - curX) * 0.05;
+        curY += (targetY - curY) * 0.05;
+        root.style.setProperty('--mx', (curX * maxShift) + 'px');
+        root.style.setProperty('--my', (curY * maxShift) + 'px');
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+  </script>
 </body>
 </html>
